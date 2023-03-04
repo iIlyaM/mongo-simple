@@ -16,10 +16,7 @@ public class InPlaceController {
 
     @PostMapping("/in_places")
     public void addPlaces(@RequestBody final List<InPlace> places) {
-        for (var place: places) {
-            place.populateCreatedAt();
-            inPlaceRepository.save(place);
-        }
+        inPlaceRepository.saveAll(places);
     }
 
     @GetMapping("/places")

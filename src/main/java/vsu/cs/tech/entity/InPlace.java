@@ -41,7 +41,7 @@ public class InPlace {
     private String person_id;
     @Indexed(name = "ttl_index", expireAfterSeconds=20)
     @JsonFormat(pattern="yyyy-MM-dd")
-    private Date time;
+    private LocalDateTime time = LocalDateTime.now();
 
     @Version
     private Integer version;
@@ -70,15 +70,8 @@ public class InPlace {
         this.person_id = person_id;
     }
 
-    public Date getTime() {
-        return time;
-    }
-
-    public void setTime(Date time) {
+    public void setTime(LocalDateTime time) {
         this.time = time;
     }
 
-    public void populateCreatedAt() {
-        this.time = Date.from(Instant.now());
-    }
 }
